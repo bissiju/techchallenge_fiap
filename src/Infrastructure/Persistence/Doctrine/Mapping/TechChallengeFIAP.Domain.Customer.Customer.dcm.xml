@@ -1,0 +1,17 @@
+<doctrine-mapping>
+    <entity name="TechChallengeFIAP\Domain\Customer\Customer" table="customers"
+            repository-class="TechChallengeFIAP\Infrastructure\Persistence\Doctrine\Repository\DoctrineCustomerRepository">
+
+        <id name="id" type="customer_id">
+        </id>
+
+        <field name="createdAt" column="created_at" type="datetime" nullable="false">
+        </field>
+
+        <field name="cpf" column="cpf" type="string" nullable="false">
+        </field>
+
+        <field name="name" column="name" type="string" nullable="false">
+        </field>
+    </entity>
+</doctrine-mapping>

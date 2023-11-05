@@ -1,0 +1,5 @@
+<doctrine-mapping>
+    <embeddable name="TechChallengeFIAP\Domain\Customer\ValueObject\Cpf">
+        <field name="cpf" column="cpf" type="string" nullable="false"/>
+    </embeddable>
+</doctrine-mapping>

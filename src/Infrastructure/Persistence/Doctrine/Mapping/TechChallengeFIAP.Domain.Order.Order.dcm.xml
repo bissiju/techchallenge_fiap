@@ -1,0 +1,27 @@
+<doctrine-mapping>
+    <entity name="TechChallengeFIAP\Domain\Order\Order" table="orders"
+            repository-class="TechChallengeFIAP\Infrastructure\Persistence\Doctrine\Repository\DoctrineOrderRepository">
+
+        <id name="orderId" column="id" type="order_id">
+        </id>
+
+        <field name="customerId" column="customer_id" type="customer_id" nullable="false">
+        </field>
+
+        <field name="status"  column="status" type="string">
+        </field>
+
+        <field name="productsId"  column="products_id" type="string">
+        </field>
+
+        <field name="totalPrice"  column="totalPrice" type="string">
+        </field>
+
+        <field name="createdAt"  column="created_at" type="datetime">
+        </field>
+
+        <field name="delivered" type="boolean">
+        </field>
+
+    </entity>
+</doctrine-mapping>

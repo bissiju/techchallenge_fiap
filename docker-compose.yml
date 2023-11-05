@@ -1,0 +1,64 @@
+version: '1.0'
+
+services:
+  app:
+    container_name: techchallengefiap_app
+    restart: unless-stopped
+    build:
+      context: .docker/PHP
+    volumes:
+      - ./:/app
+    networks:
+      - techchallengefiap
+
+  server:
+    container_name: techchallengefiap_server
+    restart: unless-stopped
+    volumes:
+      - ./:/app
+    build:
+      context: .docker/Nginx
+    ports:
+      - ${SERVER_PORT}:80
+    networks:
+      - techchallengefiap
+
+  db:
+    container_name: techchallengefiap_db
+    restart: unless-stopped
+    image: mysql:8.0
+    volumes:
+      - db_data:/var/lib/mysql
+    command: --default-authentication-plugin=mysql_native_password
+    environment:
+      - MYSQL_ROOT_PASSWORD=${DB_ROOT_PASSWORD}
+      - MYSQL_DATABASE=${DB_DATABASE}
+      - MYSQL_USER=${DB_USERNAME}
+      - MYSQL_PASSWORD=${DB_PASSWORD}
+    ports:
+      - ${DB_EXPOSED_PORT}:3306
+    networks:
+      - techchallengefiap
+
+  # mongodb:
+  #   container_name: techchallengefiap_mongodb
+  #   restart: unless-stopped
+  #   image: mongo
+  #   volumes:
+  #     - mongodb_data:/data/db
+  #   command: --serviceExecutor adaptive
+  #   environment:
+  #     - MONGO_INITDB_DATABASE=${DB_DATABASE}
+  #     - MONGO_INITDB_ROOT_USERNAME=${DB_USERNAME}
+  #     - MONGO_INITDB_ROOT_PASSWORD=${DB_PASSWORD}
+  #   ports:
+  #     - 27017:27017
+  #   networks:
+  #     - techchallengefiap
+
+volumes:
+  db_data:
+  # mongodb_data:
+
+networks:
+  techchallengefiap:

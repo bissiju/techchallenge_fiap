@@ -1,0 +1,27 @@
+<doctrine-mapping>
+    <entity name="TechChallengeFIAP\Domain\Product\Product" table="products"
+            repository-class="TechChallengeFIAP\Infrastructure\Persistence\Doctrine\Repository\DoctrineProductRepository">
+
+        <id name="productId" column="id" type="product_id">
+        </id>
+
+        <field name="name" type="string" nullable="false">
+        </field>
+
+        <field name="price" type="decimal" nullable="false">
+        </field>
+
+        <field name="category" type="string" nullable="false">
+        </field>
+
+        <field name="description" type="string" nullable="false">
+        </field>
+
+        <field name="images" type="string" nullable="false">
+        </field>
+
+        <field name="createdAt" column="created_at" type="datetime" nullable="false">
+        </field>
+
+    </entity>
+</doctrine-mapping>
